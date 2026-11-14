@@ -50,7 +50,7 @@ você vê o que está instalando antes de instalar, e acompanha o progresso depo
 - 🧭 **Assistente em 5 etapas:** Select, Overview, Details, Install e Done, com a barra de etapas à esquerda.
 - 🖱️ **Arraste e solte:** solte o `.deb` na janela ou escolha pelo botão.
 - ⏳ **Carregamento com animação:** um spinner enquanto o pacote é lido e um ✓ quando deu certo.
-- 🗂️ **Ícone nos arquivos:** todo `.deb` no gerenciador de arquivos ganha o ícone do app com um selo `.deb` no canto.
+- 🗂️ **Ícone nos arquivos:** todo `.deb` no gerenciador de arquivos ganha o ícone do app com um selo `.deb` no canto. Ao abrir um `.deb` no app, o selo vira o **ícone do próprio pacote** (por exemplo o do Claude).
 - 🖼️ **Ícone do app:** o ícone que o pacote traz aparece na tela, em SVG ou PNG.
 - 🔍 **Detalhes completos:** versão, arquitetura, tamanho instalado, mantenedor, dependências e a lista de arquivos.
 - 🔄 **Sabe o que fazer:** instalar, atualizar, reinstalar ou fazer downgrade, comparando com a versão já instalada.
@@ -85,7 +85,7 @@ sudo apt install ./deb-installer_0.1.0_all.deb
 Não há pacote para o pacman. Instale a partir do código, só para o seu usuário (sem `sudo`):
 
 ```
-sudo pacman -S python-gobject gtk4 libadwaita zstd polkit
+sudo pacman -S python-gobject python-cairo gtk4 libadwaita zstd polkit
 git clone https://github.com/BelmanteGu/deb-installer
 cd deb-installer
 ./install.sh

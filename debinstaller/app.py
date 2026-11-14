@@ -10,7 +10,7 @@ gi.require_version("Adw", "1")
 gi.require_version("Gdk", "4.0")
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk  # noqa: E402
 
-from . import backend, debinfo  # noqa: E402
+from . import backend, debinfo, fileicon  # noqa: E402
 
 STEPS = ["Select", "Overview", "Details", "Install", "Done"]
 LABEL = {"install": "Install", "upgrade": "Upgrade", "reinstall": "Reinstall", "downgrade": "Downgrade"}
@@ -191,6 +191,7 @@ class Window(Adw.ApplicationWindow):
             self.toasts.add_toast(Adw.Toast(title=f"Cannot read this file: {err}"))
             self.goto(1 if self.info else 0); return
         self.info = info
+        threading.Thread(target=fileicon.apply, args=(info.path, info), daemon=True).start()
         self.spinner.stop(); self.spinner.set_visible(False); self.check.set_visible(True)
         self.loading_page.set_title("Package loaded")
         self.loading_page.set_description(f"{info.name} {info.version}")
