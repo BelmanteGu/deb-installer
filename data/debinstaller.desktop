@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Deb Installer
+Comment=Install .deb packages with a click
+Exec=deb-installer %f
+Icon=io.github.debinstaller
+Terminal=false
+Categories=System;PackageManager;GTK;
+MimeType=application/vnd.debian.binary-package;application/x-deb;

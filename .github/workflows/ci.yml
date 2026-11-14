@@ -1,0 +1,21 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Tests
+        run: |
+          python3 tests/test_debinfo.py
+          python3 tests/test_archconv.py
+      - name: Build the .deb
+        run: python3 tools/build_deb.py dist
+      - name: Install it with apt and check it starts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ./dist/deb-installer_*_all.deb
+          dpkg -L deb-installer
+          python3 -c "import sys; sys.path.insert(0,'/usr/lib/deb-installer'); import debinstaller.debinfo as d; print(d.read_deb(__import__('glob').glob('dist/*.deb')[0]).name)"

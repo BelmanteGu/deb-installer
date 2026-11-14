@@ -1,0 +1,46 @@
+# Como funciona
+
+## Visão geral
+
+```
+ .deb ──► debinfo.py ──► janela (app.py) ──► backend.py ──┬─► apt-get install   (Debian, Ubuntu, Mint)
+          lê o pacote     assistente de 5      escolhe o    └─► archconv.py ► pacman -U   (Arch, CachyOS, Manjaro)
+          sem dpkg        etapas               sistema
+```
+
+| Arquivo | O que faz | O que não faz |
+|---|---|---|
+| `debinstaller/debinfo.py` | Lê o `.deb` em Python puro: campos do `control`, lista de arquivos e ícone. Entende `.gz`, `.xz`, `.bz2` e `.zst`. | Não instala nada e não verifica assinatura (um `.deb` solto não tem). |
+| `debinstaller/archconv.py` | Converte o `.deb` num pacote do pacman (`.pkg.tar.zst`), mantendo arquivos e permissões. | Não converte dependências (os nomes mudam entre distros) e não roda `postinst`/`prerm`. |
+| `debinstaller/backend.py` | Detecta o sistema, compara versões e roda a instalação por `pkexec`. | Nunca vê a senha: o polkit pede. |
+| `debinstaller/app.py` | A janela: barra lateral de etapas, páginas e botões. | Não lê `.deb` nem roda apt/pacman. |
+| `tools/build_deb.py` | Monta o `.deb` do próprio app em Python puro, sem `dpkg`. | Não assina o pacote. |
+
+## As etapas
+
+1. **Select**: escolha ou arraste um `.deb`. A leitura roda numa thread, com um spinner e um ✓ ao terminar
+   (pacotes grandes levam alguns segundos).
+2. **Overview**: ícone, nome, versão, resumo e se é instalação nova, atualização, reinstalação ou downgrade.
+3. **Details**: versão, arquitetura, tamanho, mantenedor, dependências e a lista de arquivos.
+4. **Install**: progresso e o log ao vivo. Se a senha for cancelada ou falhar, dá para tentar de novo.
+5. **Done**: confirmação.
+
+## O ícone
+
+O leitor procura o `Icon=` do arquivo `.desktop` do pacote (ou um ícone com o nome do pacote) em
+`/usr/share/icons` e `/usr/share/pixmaps`, prefere SVG e, se não houver, o maior PNG até 512 px.
+
+## Instalar em Arch (a conversão)
+
+Arch não tem `apt` nem `dpkg`. O app lê o `data.tar` do `.deb`, escreve um `.PKGINFO` (nome, versão, arquitetura,
+tamanho), troca `lib/`, `bin/` e `sbin/` por `usr/lib/`, `usr/bin/`, `usr/sbin/` (no Arch são links para `/usr`) e
+comprime com `zstd`. Depois roda `pkexec pacman -U` nesse pacote. Resultado: o programa fica registrado no pacman e sai
+com `sudo pacman -R <nome>`.
+
+Limites: as dependências do Debian não são verificadas (se o programa não abrir, falta alguma biblioteca: instale com
+`pacman -S`) e os scripts de instalação do `.deb` não rodam (o log lista os que foram ignorados).
+
+## Segurança
+
+- A elevação de privilégio é só `pkexec` (polkit) sobre `apt-get install` ou `pacman -U`; o app roda como seu usuário.
+- Instalar um `.deb` executa o que o pacote trouxer: instale só de quem você confia.

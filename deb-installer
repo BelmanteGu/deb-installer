@@ -1,0 +1,3 @@
+#!/bin/sh
+# Runs the app from this folder: ./deb-installer [file.deb]
+cd "$(dirname "$(readlink -f "$0")")" && exec python3 -m debinstaller "$@"
