@@ -110,8 +110,8 @@ Para remover: `./install.sh --uninstall`.
 | Ler `.deb` (control, arquivos, ícone, `.gz`/`.xz`/`.zst`) | ✅ testado, com testes automáticos e com um `.deb` real de 625 MB |
 | Interface completa (5 etapas, carregamento, ícone) | ✅ testada no CachyOS (os prints são desse teste) |
 | Conversão para pacman e instalação no CachyOS | ✅ testada: o pacote convertido foi aceito pelo pacman e instalado |
-| Instalar o `.deb` do app com `apt` | 🔄 verificado pelo CI do GitHub (Ubuntu), veja a aba Actions |
-| Instalar um `.deb` com o botão Install no Debian/Ubuntu | ⏳ ainda não verificado numa máquina real |
+| Instalar o `.deb` do app com `apt` | ✅ o CI do GitHub instala o pacote num Ubuntu a cada commit ([Actions](https://github.com/BelmanteGu/deb-installer/actions)) |
+| Botão Install (`apt-get` via `pkexec`) no Debian/Ubuntu | ⏳ ainda não verificado numa máquina real com interface gráfica |
 
 Achou um problema? [Abra uma issue](https://github.com/BelmanteGu/deb-installer/issues) dizendo a distro e a versão.
 
