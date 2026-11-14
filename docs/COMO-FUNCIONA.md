@@ -13,6 +13,7 @@
 | `debinstaller/debinfo.py` | Lê o `.deb` em Python puro: campos do `control`, lista de arquivos e ícone. Entende `.gz`, `.xz`, `.bz2` e `.zst`. | Não instala nada e não verifica assinatura (um `.deb` solto não tem). |
 | `debinstaller/archconv.py` | Converte o `.deb` num pacote do pacman (`.pkg.tar.zst`), mantendo arquivos e permissões. | Não converte dependências (os nomes mudam entre distros) e não roda `postinst`/`prerm`. |
 | `debinstaller/backend.py` | Detecta o sistema, compara versões e roda a instalação por `pkexec`. | Nunca vê a senha: o polkit pede. |
+| `debinstaller/states.py` | Os textos e ícones de cada situação (já instalado, atualização, versão antiga, arquitetura errada, falhas, arquivo inválido). Sem GTK, então tem teste. | Não desenha nada nem instala. |
 | `debinstaller/app.py` | A janela: barra lateral de etapas, páginas e botões. | Não lê `.deb` nem roda apt/pacman. |
 | `tools/build_deb.py` | Monta o `.deb` do próprio app em Python puro, sem `dpkg`. | Não assina o pacote. |
 
@@ -62,3 +63,22 @@ pacote pequeno no canto) e a grava em `~/.local/share/deb-installer/file-icons/`
 Nautilus passa a mostrar essa imagem. Não usei um *thumbnailer* porque os gerenciadores de arquivos não geram miniatura de
 arquivos grandes (o Nautilus pula tudo acima de 50 MB) e pacotes grandes são comuns. Para desligar:
 `DEB_INSTALLER_NO_FILE_ICON=1`. Sem o `python3-cairo` o recurso fica desligado e o `.deb` mantém o ícone padrão.
+
+## As situações
+
+`states.py` decide o que mostrar:
+
+| Situação | Onde aparece | Botão principal |
+|---|---|---|
+| Não instalado | card da etapa Overview | Continue |
+| **Já instalado** (mesma versão) | card verde | *Reinstall anyway* e *Close* |
+| Atualização | card azul | Continue |
+| Versão mais antiga | card amarelo | Continue |
+| Arquitetura errada | card vermelho | bloqueado |
+| Sem apt nem pacman | card vermelho | bloqueado |
+| Arquivo inválido ou danificado | página de erro | *Choose another file…* |
+| Senha cancelada, dependências, conflito, lock, disco cheio, rede, pacote corrompido | etapa Install, com o log | *Try again*, *Back*, *Copy log* |
+| Sucesso | etapa Done | *Install another*, *Close* |
+
+As falhas são reconhecidas pelo código de saída (126 e 127 são senha cancelada ou recusada pelo polkit) e por trechos
+do log do apt e do pacman. O que não é reconhecido cai em "Installation failed" com o código e o log completo.

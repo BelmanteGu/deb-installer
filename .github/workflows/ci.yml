@@ -11,6 +11,7 @@ jobs:
         run: |
           python3 tests/test_debinfo.py
           python3 tests/test_archconv.py
+          python3 tests/test_states.py
       - name: Build the .deb
         run: python3 tools/build_deb.py dist
       - name: Install it with apt and check it starts

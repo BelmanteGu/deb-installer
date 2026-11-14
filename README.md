@@ -53,6 +53,7 @@ você vê o que está instalando antes de instalar, e acompanha o progresso depo
 - 🗂️ **Ícone nos arquivos:** todo `.deb` no gerenciador de arquivos ganha o ícone do app com um selo `.deb` no canto. Ao abrir um `.deb` no app, o selo vira o **ícone do próprio pacote** (por exemplo o do Claude).
 - 🖼️ **Ícone do app:** o ícone que o pacote traz aparece na tela, em SVG ou PNG.
 - 🔍 **Detalhes completos:** versão, arquitetura, tamanho instalado, mantenedor, dependências e a lista de arquivos.
+- 🧯 **Uma tela para cada situação:** já instalado, atualização, versão antiga, arquitetura errada, arquivo inválido, senha cancelada, dependência faltando, conflito de arquivos.
 - 🔄 **Sabe o que fazer:** instalar, atualizar, reinstalar ou fazer downgrade, comparando com a versão já instalada.
 - 📜 **Log ao vivo:** a saída do apt ou do pacman aparece na janela, e dá para tentar de novo se falhar.
 - 🔐 **Senha pelo polkit:** o app roda como o seu usuário e nunca vê a sua senha.
@@ -66,6 +67,22 @@ você vê o que está instalando antes de instalar, e acompanha o progresso depo
 | <img src="docs/media/01-escolher.png" alt="Select" /> **1. Select:** escolha ou arraste o `.deb`. | <img src="docs/media/02-carregando.png" alt="Lendo o pacote" /> **Lendo:** o spinner roda enquanto o pacote é lido. |
 | <img src="docs/media/03-carregado.png" alt="Pacote carregado" /> **Carregado:** o ✓ mostra que deu certo. | <img src="docs/media/04-visao-geral.png" alt="Overview" /> **2. Overview:** ícone, versão e o que vai acontecer. |
 | <img src="docs/media/05-detalhes.png" alt="Details" /> **3. Details:** dependências, tamanho e arquivos. | |
+
+## 🧯 Todas as situações têm tela
+
+O app nunca deixa você no escuro: cada situação tem uma tela com o que aconteceu e o que fazer.
+
+| | |
+|---|---|
+| <img src="docs/media/estado-ja-instalado.png" alt="Já instalado" /> **Já instalado:** avisa e oferece *Reinstall anyway* ou *Close*. | <img src="docs/media/estado-atualizacao.png" alt="Atualização" /> **Atualização:** mostra a versão instalada e a do pacote. |
+| <img src="docs/media/estado-versao-antiga.png" alt="Versão mais antiga" /> **Versão mais antiga:** avisa que vai substituir uma versão mais nova. | <img src="docs/media/estado-arquitetura.png" alt="Arquitetura errada" /> **Arquitetura errada:** bloqueia, dizendo para qual arquitetura o pacote é. |
+| <img src="docs/media/estado-sem-suporte.png" alt="Sistema sem suporte" /> **Sistema sem suporte:** sem apt nem pacman, explica e bloqueia. | <img src="docs/media/erro-arquivo.png" alt="Arquivo inválido" /> **Arquivo inválido:** não é um `.deb`, está danificado ou sumiu. |
+| <img src="docs/media/falha-cancelado.png" alt="Cancelado" /> **Senha cancelada:** nada foi instalado. | <img src="docs/media/falha-dependencias.png" alt="Dependências" /> **Dependências:** diz o que faltou, com o log e *Copy log*. |
+| <img src="docs/media/falha-conflito.png" alt="Conflito" /> **Conflito de arquivos:** com outro pacote. | <img src="docs/media/concluido.png" alt="Concluído" /> **Concluído:** *Install another* ou *Close*. |
+
+> [!NOTE]
+> As respostas do sistema nestas capturas são **simuladas** (o que o apt ou o pacman diriam); as telas são as reais.
+> A ferramenta que gera tudo é `tools/state_shots.py`.
 
 ## 📲 Como instalar
 
