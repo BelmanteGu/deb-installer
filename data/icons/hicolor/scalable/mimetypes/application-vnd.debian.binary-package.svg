@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <g transform="translate(-2 -2) scale(0.98)">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0446a"/><stop offset="1" stop-color="#a80030"/>
+    </linearGradient>
+    <linearGradient id="box" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f6d9e0"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="url(#bg)"/>
+  <!-- box -->
+  <rect x="31" y="70" width="66" height="38" rx="7" fill="url(#box)"/>
+  <rect x="27" y="60" width="74" height="16" rx="6" fill="#ffffff"/>
+  <rect x="57" y="60" width="14" height="22" rx="3" fill="#a80030" opacity=".18"/>
+  <!-- arrow -->
+  <path d="M64 16c3.3 0 6 2.7 6 6v20h9.5c3 0 4.6 3.5 2.6 5.8L67.6 64.2a5 5 0 0 1-7.2 0L45.9 47.8C43.9 45.5 45.5 42 48.5 42H58V22c0-3.3 2.7-6 6-6z" fill="#ffffff"/>
+</g>
+  <!-- small .deb badge: a page with a folded corner, bottom right -->
+  <g transform="translate(76 74) scale(0.85)">
+    <path d="M6 0h30l16 16v38a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6z" fill="#000" opacity=".25" transform="translate(0 2.5)"/>
+    <path d="M6 0h30l16 16v38a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6z" fill="#ffffff"/>
+    <path d="M36 0l16 16H42a6 6 0 0 1-6-6z" fill="#e6bcc7"/>
+    <rect x="7" y="26" width="38" height="20" rx="4" fill="#a80030"/>
+    <text x="26" y="40.5" text-anchor="middle" font-family="Cantarell, 'DejaVu Sans', sans-serif" font-weight="800" font-size="13" fill="#fff">.deb</text>
+  </g>
+</svg>

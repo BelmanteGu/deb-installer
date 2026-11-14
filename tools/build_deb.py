@@ -50,6 +50,8 @@ def collect():
     desktop = open(os.path.join(ROOT, "data/debinstaller.desktop")).read()
     add("usr/share/applications/io.github.debinstaller.desktop", desktop.encode())
     add("usr/share/icons/hicolor/scalable/apps/io.github.debinstaller.svg", "data/icons/hicolor/scalable/apps/io.github.debinstaller.svg")
+    for n in ("application-vnd.debian.binary-package", "application-x-deb"):
+        add(f"usr/share/icons/hicolor/scalable/mimetypes/{n}.svg", f"data/icons/hicolor/scalable/mimetypes/{n}.svg")
     add("usr/share/icons/hicolor/256x256/apps/io.github.debinstaller.png", "assets/icon-256.png")
     add(f"usr/share/doc/{NAME}/copyright", "LICENSE")
     add(f"usr/share/doc/{NAME}/README.md", "README.md")

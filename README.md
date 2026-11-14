@@ -50,6 +50,7 @@ você vê o que está instalando antes de instalar, e acompanha o progresso depo
 - 🧭 **Assistente em 5 etapas:** Select, Overview, Details, Install e Done, com a barra de etapas à esquerda.
 - 🖱️ **Arraste e solte:** solte o `.deb` na janela ou escolha pelo botão.
 - ⏳ **Carregamento com animação:** um spinner enquanto o pacote é lido e um ✓ quando deu certo.
+- 🗂️ **Ícone nos arquivos:** todo `.deb` no gerenciador de arquivos ganha o ícone do app com um selo `.deb` no canto.
 - 🖼️ **Ícone do app:** o ícone que o pacote traz aparece na tela, em SVG ou PNG.
 - 🔍 **Detalhes completos:** versão, arquitetura, tamanho instalado, mantenedor, dependências e a lista de arquivos.
 - 🔄 **Sabe o que fazer:** instalar, atualizar, reinstalar ou fazer downgrade, comparando com a versão já instalada.
