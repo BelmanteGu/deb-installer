@@ -58,7 +58,7 @@ reiniciado (`nautilus -q`) para ler o tipo novo.
 ### O ícone do pacote no selo
 
 Quando você abre um `.deb` no app, `debinstaller/fileicon.py` monta uma imagem (o ícone do Deb Installer com o ícone do
-pacote pequeno no canto) e a grava em `~/.local/share/deb-installer/file-icons/`. Depois define o atributo
+pacote pequeno no canto) e a grava em `~/.local/share/deb-installer-file-icons/`. Depois define o atributo
 `metadata::custom-icon` daquele arquivo (o GIO guarda isso junto das suas configurações; o `.deb` não é tocado) e o
 Nautilus passa a mostrar essa imagem. Não usei um *thumbnailer* porque os gerenciadores de arquivos não geram miniatura de
 arquivos grandes (o Nautilus pula tudo acima de 50 MB) e pacotes grandes são comuns. Para desligar:

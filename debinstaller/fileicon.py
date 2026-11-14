@@ -66,7 +66,7 @@ def compose(icon_bytes, out_path):
 def apply(deb_path, info):
     """Sets the composite as the icon of `deb_path`. Returns the PNG path, or None."""
     if cairo is None or os.environ.get("DEB_INSTALLER_NO_FILE_ICON") or not info.icon: return None
-    d = os.path.join(GLib.get_user_data_dir(), "deb-installer", "file-icons")
+    d = os.path.join(GLib.get_user_data_dir(), "deb-installer-file-icons")  # not inside the app folder: reinstalling wipes that
     os.makedirs(d, exist_ok=True)
     out = os.path.join(d, hashlib.sha1(info.icon + info.name.encode()).hexdigest()[:16] + ".png")
     try:

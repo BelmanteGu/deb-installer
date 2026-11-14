@@ -8,8 +8,8 @@ if [ "$1" = "--uninstall" ]; then
   rm -rf "$APP" "$P/bin/deb-installer" "$P/share/applications/io.github.debinstaller.desktop" \
          "$P/share/icons/hicolor/scalable/apps/io.github.debinstaller.svg" \
          "$P/share/icons/hicolor/scalable/mimetypes/io.github.debinstaller.deb-file.svg" \
-         "$P/share/mime/packages/io.github.debinstaller.xml" "$P/share/icons/hicolor/256x256/apps/io.github.debinstaller.png" \
-         "$P/share/deb-installer-file-icons"
+         "$P/share/mime/packages/io.github.debinstaller.xml" "$P/share/icons/hicolor/256x256/apps/io.github.debinstaller.png"
+  # $P/share/deb-installer-file-icons is kept on purpose: .deb files you opened still point to the images in it
   command -v update-mime-database >/dev/null && update-mime-database "$P/share/mime" 2>/dev/null || true
   command -v update-desktop-database >/dev/null && update-desktop-database "$P/share/applications" 2>/dev/null || true
   echo "Deb Installer removed."; exit 0
