@@ -23,7 +23,7 @@ Version: {version}
 Architecture: all
 Maintainer: BelmanteGu <noreply@github.com>
 Installed-Size: {size}
-Depends: python3 (>= 3.9), python3-gi, python3-gi-cairo, gir1.2-gtk-4.0 (>= 4.10), gir1.2-adw-1 (>= 1.4), apt, pkexec | policykit-1
+Depends: python3 (>= 3.9), python3-gi, gir1.2-gtk-4.0 (>= 4.10), gir1.2-adw-1 (>= 1.4), apt, pkexec | policykit-1
 Recommends: zstd
 Section: utils
 Priority: optional
