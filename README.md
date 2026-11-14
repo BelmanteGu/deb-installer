@@ -58,7 +58,7 @@ você vê o que está instalando antes de instalar, e acompanha o progresso depo
 - 📜 **Log ao vivo:** a saída do apt ou do pacman aparece na janela, e dá para tentar de novo se falhar.
 - 🔐 **Senha pelo polkit:** o app roda como o seu usuário e nunca vê a sua senha.
 - 🐧 **Debian e Arch:** `apt-get` no Debian, Ubuntu e Mint; conversão para pacman no Arch, CachyOS e Manjaro.
-- 🪶 **Leve:** o `.deb` do app tem menos de 20 KB, em Python puro sobre GTK4/libadwaita.
+- 🪶 **Leve:** o `.deb` do app tem cerca de 20 KB, em Python puro sobre GTK4/libadwaita.
 
 ## 📸 Prints
 
@@ -66,7 +66,7 @@ você vê o que está instalando antes de instalar, e acompanha o progresso depo
 |---|---|
 | <img src="docs/media/01-escolher.png" alt="Select" /> **1. Select:** escolha ou arraste o `.deb`. | <img src="docs/media/02-carregando.png" alt="Lendo o pacote" /> **Lendo:** o spinner roda enquanto o pacote é lido. |
 | <img src="docs/media/03-carregado.png" alt="Pacote carregado" /> **Carregado:** o ✓ mostra que deu certo. | <img src="docs/media/04-visao-geral.png" alt="Overview" /> **2. Overview:** ícone, versão e o que vai acontecer. |
-| <img src="docs/media/05-detalhes.png" alt="Details" /> **3. Details:** dependências, tamanho e arquivos. | |
+| <img src="docs/media/05-detalhes.png" alt="Details" /> **3. Details:** dependências, tamanho e arquivos. | <img src="docs/media/icone-no-nautilus.png" alt="Ícone do .deb no Nautilus" width="120" /> **No gerenciador de arquivos:** todo `.deb` ganha o ícone do app com o selo. |
 
 ## 🧯 Todas as situações têm tela
 
@@ -92,7 +92,7 @@ O app nunca deixa você no escuro: cada situação tem uma tela com o que aconte
 2. Instale:
 
 ```
-sudo apt install ./deb-installer_0.1.0_all.deb
+sudo apt install ./deb-installer_0.1.1_all.deb
 ```
 
 3. Abra **Deb Installer** no menu. Depois disso, dê dois cliques em qualquer `.deb` para abrir nele.
