@@ -44,3 +44,12 @@ Limites: as dependências do Debian não são verificadas (se o programa não ab
 
 - A elevação de privilégio é só `pkexec` (polkit) sobre `apt-get install` ou `pacman -U`; o app roda como seu usuário.
 - Instalar um `.deb` executa o que o pacote trouxer: instale só de quem você confia.
+
+## O ícone dos arquivos `.deb`
+
+Todo `.deb` no gerenciador de arquivos mostra o ícone do app com um selo `.deb` no canto. Não basta pôr o ícone no tema
+`hicolor` com o nome do tipo (`application-vnd.debian.binary-package`): o GTK procura **tema por tema**, e um tema como o
+Adwaita já tem o ícone genérico `package-x-generic`, que ganha antes de o GTK olhar o `hicolor`. Por isso o app instala
+`data/mime/io.github.debinstaller.xml`, que dá ao tipo `.deb` um nome de ícone que nenhum tema define
+(`io.github.debinstaller.deb-file`), e o ícone com esse nome no `hicolor`. O gerenciador de arquivos pode precisar ser
+reiniciado (`nautilus -q`) para ler o tipo novo.

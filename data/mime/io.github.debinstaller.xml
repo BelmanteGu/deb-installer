@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Gives .deb files the Deb Installer icon (with a small .deb badge). Themes that ship a generic package icon would
+     otherwise win over the icon theme fallback, so the type gets an icon name no theme defines. -->
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/vnd.debian.binary-package">
+    <comment>Debian package</comment>
+    <icon name="io.github.debinstaller.deb-file"/>
+    <generic-icon name="io.github.debinstaller.deb-file"/>
+  </mime-type>
+  <mime-type type="application/x-deb">
+    <comment>Debian package</comment>
+    <icon name="io.github.debinstaller.deb-file"/>
+    <generic-icon name="io.github.debinstaller.deb-file"/>
+  </mime-type>
+</mime-info>
